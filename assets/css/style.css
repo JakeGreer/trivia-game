@@ -1,0 +1,112 @@
+body {
+	background-image: url("../images/question-marks.JPG");
+	background-repeat: no-repeat;
+	background-size: cover; 
+}
+.mainBtn {
+	height: 150px;
+	width: 350px;
+	margin: 25px;
+}
+
+#movies {
+	background-image: url("../images/A-Dance-with-Dragons-by-Yama-Orce-Game-of-Thrones-Art.jpg");
+	background-size: cover;
+	color: #fff;
+	-webkit-text-stroke: 1px black;
+	font-weight: bold;
+	font-size: 50px;
+
+}
+
+#tv {
+	/*background-image: url("../images/tv-button.png");
+	background-size: contain;*/
+	color: #fff;
+	font-weight: bold;
+	font-size: 50px;
+}
+
+#sports {
+	/*background-image: url("../images/sports-button.jpeg");
+	background-size: contain;*/
+	color: #fff;
+	font-weight: bold;
+	font-size: 50px;
+}
+
+#random {
+	/*background-image: url("../images/random-button.jpeg");
+	background-size: contain;*/
+	color: #fff;
+	font-weight: bold;
+	font-size: 50px;
+}
+
+#picture {
+	height: 300px;
+	margin: 20px auto;
+	/*background-image: url("../images/gotOne.jpeg");*/
+	background-size: contain;
+}
+
+#show-number {
+	padding: 20px;
+	background-color: red;
+	text-align: center;
+	margin-bottom: 20px;
+	display: inline-block;
+	color: black;
+}
+
+#question {
+	background-color: #fff;
+	text-align: center;
+	padding: 20px;
+	color: black;
+	border: 2px solid #bbb;
+}
+
+.answers {
+	background: black;
+	padding: 20px;
+	margin-top: 20px;
+	color: #fff;
+}
+
+#ansOne {
+	border:4px solid #bbb;
+}
+
+#ansTwo {
+	border: 4px solid #bbb;
+}
+
+#ansThree {
+	border: 4px solid #bbb;
+}
+
+#ansFour {
+	border: 4px solid #bbb;
+}
+
+#submit {
+	height: 60px;
+	width: 120px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: green;
+}
+
+.footer { 
+	background-color: #bbb;
+	margin: 5px;
+	padding: 20px;
+	font-weight: bold;
+	color: #eee
+}
+
+
+
+
+
