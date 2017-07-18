@@ -8,7 +8,7 @@ body {
 .mainBtn {
 	height: 150px;
 	width: 350px;
-	margin: 25px;
+
 }
 
 #movies {
@@ -62,7 +62,7 @@ body {
 }
 
 #question {
-	background-color: #fff;
+	background: rgba(225, 225, 225, .8); 
 	text-align: center;
 	padding: 20px;
 	color: black;
