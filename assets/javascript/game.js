@@ -335,7 +335,7 @@ if((window.location == "file:///Users/JakeGreer/portfolio/trivia-game/movies.htm
 }
 
 else {
-	console.log(window.location);
+	console.log(window.location.href);
 }
 
 
