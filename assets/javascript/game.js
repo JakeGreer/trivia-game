@@ -327,7 +327,7 @@ function timeConverter(t) {
 
 }
 
-if(window.location == "file:///Users/JakeGreer/portfolio/trivia-game/movies.html") {
+if(window.location == "file:///Users/JakeGreer/portfolio/trivia-game/movies.html" || window.loaction == "https://jakegreer.github.io/trivia-game/movies.html") {
 	run();
 }
 else {
