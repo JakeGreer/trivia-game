@@ -253,6 +253,9 @@ function getAnswer() {
   else if(answer[3].checked) {
   	userAnswer = "d";
   }
+  else {
+  	userAnswer = "none";
+  }
  
   return userAnswer;
 
