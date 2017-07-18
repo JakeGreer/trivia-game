@@ -327,9 +327,13 @@ function timeConverter(t) {
 
 }
 
-if(window.location == "file:///Users/JakeGreer/portfolio/trivia-game/movies.html" || window.location.href == "https://jakegreer.github.io/trivia-game/movies.html") {
+if((window.location == "file:///Users/JakeGreer/portfolio/trivia-game/movies.html") || 
+   (window.location.href == "https://jakegreer.github.io/trivia-game/movies.html") || 
+   (window.location == "https://jakegreer.github.io/trivia-game/movies.html")) {
+
 	run();
 }
+
 else {
 	console.log(window.location);
 }
