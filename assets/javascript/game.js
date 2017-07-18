@@ -1,7 +1,7 @@
 //variable used to keep track of wuestion and answer;
 var index = 0;
 // //variable for tick sound;
-// var audio = new Audio ("link");
+var audio = new Audio("assets/sound/tick-tock (mp3cut.net).mp3");
 //variable used to set time for each question;
 var time = 20;
 //variable used to set interval pace;
@@ -48,16 +48,18 @@ window.onload = function(){
 	$("label[for*='q1c']").html(movie.answers[index][2]);
 	$("label[for*='q1d']").html(movie.answers[index][3]);
 	$("#show-number").html("<span>" + timeConverter(time) + "</span>");
-	$("#submit").text("Next");	
+	$("#submit").text("Next");
+
 };
 
 function animateClock(span) {
 
-		$(span).addClass("turn");
+		span.className = "turn";
 
 		setTimeout(function() {
 
-			$(span).removeClass("turn");
+			span.className = "";
+
 		}, 700);
 }
 
@@ -70,16 +72,17 @@ function animateClock(span) {
 
 
 function run() {
-
 	if(!clockRunning) {
 		intervalId = setInterval(decrement, 1000);
-		clockRunning = true;
 	}
+
 }
 
 function decrement() {
 
+	audio.play();
 	time--;
+
 	var current = timeConverter(time);
 
 	var clock = document.getElementById("show-number");
@@ -97,6 +100,7 @@ function decrement() {
 		//Timer control
         stop();
         alert("Time Up!");
+
         reset();
         userAnswers[index] = "none";
         //update index;
@@ -117,9 +121,9 @@ function decrement() {
 
 //stops the clock 
 function stop() {
-
       clearInterval(intervalId);
       clockRunning = false;
+
 }
 
 function loadNext() {
@@ -276,6 +280,7 @@ function submit() {
 }
  
 function results() {
+		audio.pause();
 		var confetti = "assets/images/Confetti1.jpg";
 		$("#picture").css('background-image', 'url(' + confetti + ')'); 
 
@@ -322,9 +327,12 @@ function timeConverter(t) {
 
 }
 
-//Activate Program/timer
-run();
-
+if(window.location == "file:///Users/JakeGreer/portfolio/trivia-game/movies.html") {
+	run();
+}
+else {
+	console.log(window.location);
+}
 
 
 
