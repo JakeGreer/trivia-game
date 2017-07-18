@@ -12,8 +12,6 @@ body {
 }
 
 #movies {
-	background-image: url("../images/A-Dance-with-Dragons-by-Yama-Orce-Game-of-Thrones-Art.jpg");
-	background-size: cover;
 	color: #fff;
 	-webkit-text-stroke: 1px black;
 	font-weight: bold;
@@ -22,25 +20,22 @@ body {
 }
 
 #tv {
-	background-image: url("../images/tv-button.png");
-	background-size: contain;
 	color: #fff;
+	-webkit-text-stroke: 1px black;
 	font-weight: bold;
 	font-size: 50px;
 }
 
 #sports {
-	background-image: url("../images/sports-button.jpeg");
-	background-size: contain;
 	color: #fff;
+	-webkit-text-stroke: 1px black;
 	font-weight: bold;
 	font-size: 50px;
 }
 
 #random {
-	background-image: url("../images/random-button.jpeg");
-	background-size: contain;
 	color: #fff;
+	-webkit-text-stroke: 1px black;
 	font-weight: bold;
 	font-size: 50px;
 }
@@ -116,6 +111,7 @@ body {
 	background-color: #2dcb74;
 	color: #fff;
 	font-size: 25px;
+
 }
 
 .footer { 
@@ -126,7 +122,7 @@ body {
 	color: #eee
 }
 
-.turn {
+span.turn {
 	animation: turn 0.7s ease forwards;
 }
 

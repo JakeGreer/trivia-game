@@ -3,25 +3,40 @@ var index = 0;
 // //variable for tick sound;
 // var audio = new Audio ("link");
 //variable used to set time for each question;
-var time = 5;
+var time = 20;
 //variable used to set interval pace;
 var intervalId;
 //Bool used to keep track if the clock is on or off
 var clockRunning = false;
 //stores the users answers
 var userAnswers = [];
+//used to display text on the button/used for changing the text at the end.
+var btnText = "Next";
+//creates variable for the submit button;
+var submitBtn = $("#but").append("<button class='btn btn-primary btn-xl center-block' id='submit' type='submit' name='answer' onclick='submit(index);'></button>");
+//Counts number of correct answers
+var correct = 0;
 
 //Movie image array
 var movie = {
 	
-	images: ["assets/images/gotOne.jpeg", "assets/images/step-brothers.jpg", "#", "#", "#"],
+	images: ["assets/images/gotOne.jpeg", 
+			 "assets/images/step-brothers.jpg", 
+			 "assets/images/wizard-of-oz.jpg", 
+			 "assets/images/lord-of-the-rings.jpg", 
+			 "assets/images/the-godfather.jpg"],
 	
-	questions: ["Goerge RR. Martin, the writer of Game of Thrones, also wrote which classic 1990's movie...", "Will Ferrell and John C. Reilly, the main characters in Step Brothers, also appear in which movie together?", "what movie: 3", "what movie: 4", "what movie: 5"],
+	questions: ["Goerge RR. Martin, the writer of Game of Thrones, also wrote which classic 1990's movie...", 
+				"Will Ferrell and John C. Reilly, the main characters in Step Brothers, also appear in which movie together?", 
+				"What color were the slippers in the original Wizard of Oz?", 
+				"Three movies are tied for the most oscars ever recieved: \"Ben-Hur\" (1959), \"Titanic\" (1997), and \"The Lord of the Rings: The Return of the King\" (2003). How many oscars did these films recieve?", 
+				"In \"The Godfather,\" what does Jack Wolz find in his bed when he wakes up?"],
 	
 	answers: [[" Jurassic Park", " The Lion King", " Goodfellas", " Beauty and the Beast"],
 			  ["Anchorman 2", "Talladega Nights: The Ballads of Ricky Bobby", "Holmes and Watson", "All of the above"],
-			  ["answer: 1", "answer: 2", "answer 3", "answer: 4"],
-			  ["answer: 1", "answer: 2", "answer 3", "answer: 4"]]
+			  ["Red", "Blue", "Silver", "White"],
+			  ["9", "11", "4", "2"],
+			  ["A Horse Head", "A Dog Head", "A Cow Head", "A Cat Head"]]
 };
 
 window.onload = function(){ 
@@ -33,7 +48,7 @@ window.onload = function(){
 	$("label[for*='q1c']").html(movie.answers[index][2]);
 	$("label[for*='q1d']").html(movie.answers[index][3]);
 	$("#show-number").html("<span>" + timeConverter(time) + "</span>");
-	
+	$("#submit").text("Next");	
 };
 
 function animateClock(span) {
@@ -48,11 +63,9 @@ function animateClock(span) {
 
  function reset() {
 
-     time = timeConverter(5);
+     time = timeConverter(20);
 
     $("#show-number").html('<span>' + time + '</span>');
-
-    // run();
 }
 
 
@@ -79,19 +92,20 @@ function decrement() {
 
 
 	if (time === 0) {
+
 		if(index < 5) {
 		//Timer control
         stop();
         alert("Time Up!");
         reset();
-        userAnswers[index] = 0;
+        userAnswers[index] = "none";
         //update index;
         index++;
         //Load next questions,answers and image;
 
         loadNext();
         //run clock again;
-        // run();
+        run();
     	}
     	else {
     		stop();
@@ -110,39 +124,111 @@ function stop() {
 
 function loadNext() {
 
-	$("#picture").css('background-image', 'url(' + movie.images[index] + ')'); 
-	$("#question").html("<h1>" + movie.questions[index] + "</h1>");
-	$("label[for*='q1a']").html(movie.answers[index][0]);
-	$("label[for*='q1b']").html(movie.answers[index][1]);
-	$("label[for*='q1c']").html(movie.answers[index][2]);
-	$("label[for*='q1d']").html(movie.answers[index][3]);
-	$("#show-number").html("<span>" + timeConverter(time) + "</span>");
+	if(index < 5) {
+		$("#picture").css('background-image', 'url(' + movie.images[index] + ')'); 
+		$("#question").html("<h1>" + movie.questions[index] + "</h1>");
+		$("label[for*='q1a']").html(movie.answers[index][0]);
+		$("label[for*='q1b']").html(movie.answers[index][1]);
+		$("label[for*='q1c']").html(movie.answers[index][2]);
+		$("label[for*='q1d']").html(movie.answers[index][3]);
+		$("#show-number").html("<span>" + timeConverter(time) + "</span>");
+	}
+	else {
+		results();
+	}
 
 }
 
 
 
-function findAnswer() {
+function getCorrect() {
 
- 	var answer;
+ 	var answer = getAnswer();
+
 
 	if(index == 0) {
-		answer = 3;
-	}
-	if(index == 1) {
-		answer = 3;
-	}
-	if(index == 2) {
-		answer = 2;
-	}
-	if(index == 3) {
-		answer = 1;
-	}
-	if(index == 4) {
-		answer = 0;
+
+		if(answer == "d"){
+			$(".answers").css("background-color", "lightgreen");
+
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+
+			correct++;
+		}
+		else {
+			$(".answers").css("background-color", "red");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+		}
 	}
 
-	return answer;
+	if(index == 1) {
+
+		if(answer == "d") {
+			$(".answers").css("background-color", "lightgreen");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+			correct++;
+		}
+		else {
+			$(".answers").css("background-color", "red");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+		}
+	}
+	if(index == 2) {
+
+		if(answer == "c") {
+			$(".answers").css("background-color", "lightgreen");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+			correct++;
+		}
+		else {
+			$(".answers").css("background-color", "red");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+		}
+	}
+	if(index == 3) {
+
+		if(answer == "b") {
+			$(".answers").css("background-color", "lightgreen");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+			correct++;
+		}
+		else {
+			$(".answers").css("background-color", "red");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+		}
+	}
+	if(index == 4) {
+
+		if(answer == "a") {
+			$(".answers").css("background-color", "lightgreen");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+			correct++;
+		}
+		else {
+			$(".answers").css("background-color", "red");
+			setTimeout(function() {
+				$(".answers").css("background-color", "black")}, 200
+			);
+		}
+	}
 }
 
 function getAnswer() {
@@ -169,15 +255,47 @@ function getAnswer() {
 }
 
 function submit() {
+
+	getCorrect();
 	userAnswers[index] = getAnswer();
 	console.log(userAnswers[index]);
-
 	index++;
 
-	loadNext();
+	if(index < 5) {
+		if(index == 4 ) {
+      		$("#submit").text("Submit");
+      	}
+
+		loadNext();
+		reset();		
+	}
+	else {
+		stop();
+		results();
+	}
 }
  
+function results() {
+		var confetti = "assets/images/Confetti1.jpg";
+		$("#picture").css('background-image', 'url(' + confetti + ')'); 
 
+		$("#question").html("<h1>Question 1</h1><p></p><h2>Your Answer: " + userAnswers[0].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: D</h2>" + "<br>" + 
+							"<h1>Question 2</h1><p></p><h2>Your Answer: " + userAnswers[1].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: D</h2>" + "<br>" + 
+							"<h1>Quesion 3</h1><p></p><h2>Your Answer: " + userAnswers[2].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: C</h2>" + "<br>" + 
+							"<h1>Question 4</h1><p></p><h2>Your Answer: " + userAnswers[3].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: B</h2>" + "<br>" + 
+							"<h1>Question 5</h1><p></p><h2>Your Answer: " + userAnswers[4].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: A</h2>" + "<br>" + 
+							"<br><br><br><br> <h1>You Got " + correct + " out of 5 correct!</h1>");
+
+		$("#show-number").css("display", "none");
+		$(".answers").css("display", "none");
+		$("#submit").css("display", "none");
+
+		setTimeout(function() {
+            window.location='index.html'
+        }, 10000);
+		
+
+}
   // if answer is correct
   // if(userAnswer=== movie.answers[index][3]){
   //   // add to the number of correct answers
@@ -205,7 +323,7 @@ function timeConverter(t) {
 }
 
 //Activate Program/timer
-// run();
+run();
 
 
 
