@@ -8,21 +8,16 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.js" integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg="
  			crossorigin="anonymous"></script>
 
- 	<link rel="stylesheet" href="assets/css/style.css">
- 	<!-- game.js file -->
- 	<script rel="stylesheet" type="text/javascript" src="assets/javascript/game.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+
+
 </head>
-<body>
+<body id="picture">
 	<div class="container" id="moviePage">
 		<div class="row">
-			<div class="col-md-12" id="picture">
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4" id="show-number"></div>
-			<div class="col-md-4"></div>
+			<div class="col-md-5"></div>
+			<div class="col-md-2 center-block text-center" id="show-number"></div>
+			<div class="col-md-5"></div>
 		</div>
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -38,12 +33,12 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-4 answers" id="ansOne">
 				<ul class="answers">
-					<input type="radio" name="q" value="a" id="q1a" class="center-block">&nbsp;&nbsp;&nbsp;<label for="q1a"></label><br/>
+					<input type="radio" name="answer" value="a" id="q1a" onclick="getAnswer();">&nbsp;&nbsp;&nbsp;<label for="q1a"></label><br/>
 				</ul>
 			</div>
 			<div class="col-md-4 answers" id="ansTwo">
 				<ul class="answers">
-					<input type="radio" name="q" value="b" id="q1b" class="center-block">&nbsp;&nbsp;&nbsp;<label for="q1b"></label><br/>
+					<input type="radio" name="answer" value="b" id="q1b" onclick="getAnswer();">&nbsp;&nbsp;&nbsp;<label for="q1b"></label><br/>
 				</ul>				
 			</div>
 			<div class="col-md-2"></div>
@@ -52,13 +47,13 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-4 answers" id="ansThree">
 				<ul class="answers">
-					<input type="radio" name="q" value="c" id="q1c" class="center-block">&nbsp;&nbsp;&nbsp;<label for="q1c"></label><br/>
+					<input type="radio" name="answer" value="c" id="q1c" onclick="getAnswer();">&nbsp;&nbsp;&nbsp;<label for="q1c"></label><br/>
 				</ul>
 				
 			</div>
 			<div class="col-md-4 answers" id="ansFour">
 				<ul class="answers">
-					<input type="radio" name="q" value="d" id="q1d" class="center-block">&nbsp;&nbsp;&nbsp;<label for="q1d"></label><br/>
+					<input type="radio" name="answer" value="d" id="q1d" onclick="getAnswer();">&nbsp;&nbsp;&nbsp;<label for="q1d"></label><br/>
 				</ul>
 			</div>
 
@@ -67,7 +62,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<button class="btn btn-primary btn-xl center-block" id="submit">Submit</button>
+				<button class="btn btn-primary btn-xl center-block" id="submit" type="submit" name="answer" onclick="submit();">Submit</button>
 			</div>
 		</div>
 		<div class="row">
@@ -75,5 +70,10 @@
 		</div>
 
 	</div>
+
+	<!-- game.js file -->
+ 	<script rel="stylesheet" type="text/javascript" src="assets/javascript/game.js"></script>
+
 </body>
+
 </html>
