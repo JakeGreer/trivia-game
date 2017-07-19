@@ -240,7 +240,9 @@ function submit() {
 }
  
 function results() {
-		audio.pause();
+
+		audio = new Audio("#");
+
 		var confetti = "assets/images/Confetti1.jpg";
 		$("#picture").css('background-image', 'url(' + confetti + ')'); 
 
