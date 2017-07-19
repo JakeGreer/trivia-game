@@ -16,6 +16,8 @@ var btnText = "Next";
 var submitBtn = $("#but").append("<button class='btn btn-primary btn-xl center-block' id='submit' type='submit' name='answer' onclick='submit(index);'></button>");
 //Counts number of correct answers
 var correct = 0;
+//variable to keep track of max questions
+var maxIndex = 10;
 
 //Movie image array
 var movie = {
@@ -24,19 +26,37 @@ var movie = {
 			 "assets/images/step-brothers.jpg", 
 			 "assets/images/wizard-of-oz.jpg", 
 			 "assets/images/lord-of-the-rings.jpg", 
-			 "assets/images/the-godfather.jpg"],
+			 "assets/images/the-godfather.jpg",
+			 "assets/images/james-bond.jpg",
+			 "assets/images/sandlot.jpg",
+			 "assets/images/star-wars.jpg",
+			 "assets/images/harry-potter.jpg",
+			 "assets/images/princess-bride.jpg"],
 	
 	questions: ["Goerge RR. Martin, the writer of Game of Thrones, also wrote which classic 1990's movie...", 
 				"Will Ferrell and John C. Reilly, the main characters in Step Brothers, also appear in which movie together?", 
 				"What color were the slippers in the original Wizard of Oz?", 
 				"Three movies are tied for the most oscars ever recieved: \"Ben-Hur\" (1959), \"Titanic\" (1997), and \"The Lord of the Rings: The Return of the King\" (2003). How many oscars did these films recieve?", 
-				"In \"The Godfather,\" what does Jack Wolz find in his bed when he wakes up?"],
+				"In \"The Godfather,\" what does Jack Wolz find in his bed when he wakes up?",
+				"Which of these men have not played James Bond?",
+				"What is Mr. Mertles dog's name?",
+				"In the movie series Star Wars, what bounty hunter did Obi-Wan impersonate to prevent an assassination?",
+				"Which Harry Potter book was made into two movies?",
+				"Finish this line from \"The Princess Bride\": \"Hello. My name is Inigo Montoya...\""],
 	
 	answers: [[" Jurassic Park", " The Lion King", " Goodfellas", " Beauty and the Beast"],
 			  ["Anchorman 2", "Talladega Nights: The Ballads of Ricky Bobby", "Holmes and Watson", "All of the above"],
 			  ["Red", "Blue", "Silver", "White"],
 			  ["9", "11", "4", "2"],
-			  ["A Horse Head", "A Dog Head", "A Cow Head", "A Cat Head"]]
+			  ["A Horse Head", "A Dog Head", "A Cow Head", "A Cat Head"],
+			  ["Pierce Brosnan", "Sean Connery", "Sean Bean", "Roger Moore"],
+			  ["Goliath", "The Beast", "Hercules", "Hulk"],
+			  ["Rako Hardeen", "Zam Wesell", "Jango Fett", "Boba Fett"],
+			  ["Harry Potter and the Half Blood Prince", "Harry Potter and the Goblet of Fire", "Harry Potter and the Order of the Phoenix", "Harry Potter and the Deathly Hallows"],
+			  ["\"You seem a decent fellow. I hate to kill you.\"", "\"You killed my father. Prepare to die.\"", "\"I\'ll Probably kill you in the morning.\"", "\"We are men of action. Lies do not become us.\""]],
+
+	key: ["d", "d", "c", "b", "a", "c", "c", "a", "d", "b"]
+
 };
 
 window.onload = function(){ 
@@ -96,7 +116,7 @@ function decrement() {
 
 	if (time === 0) {
 
-		if(index < 5) {
+		if(index < maxIndex) {
 		//Timer control
         stop();
         alert("Time Up!");
@@ -113,7 +133,7 @@ function decrement() {
     	}
     	else {
     		stop();
-    		/*showResults();*/
+    		results();
     	}
 
     }
@@ -128,7 +148,7 @@ function stop() {
 
 function loadNext() {
 
-	if(index < 5) {
+	if(index < maxIndex) {
 		$("#picture").css('background-image', 'url(' + movie.images[index] + ')'); 
 		$("#question").html("<h1>" + movie.questions[index] + "</h1>");
 		$("label[for*='q1a']").html(movie.answers[index][0]);
@@ -149,90 +169,27 @@ function getCorrect() {
 
  	var answer = getAnswer();
 
+ 	if(answer == movie.key[index]) {
 
-	if(index == 0) {
-
-		if(answer == "d"){
-			$(".answers").css("background-color", "lightgreen");
+ 		$(".answers").css("background-color", "lightgreen");
 
 			setTimeout(function() {
 				$(".answers").css("background-color", "black")}, 200
 			);
 
-			correct++;
-		}
-		else {
-			$(".answers").css("background-color", "red");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-		}
-	}
+		correct++;
 
-	if(index == 1) {
+ 	}
 
-		if(answer == "d") {
-			$(".answers").css("background-color", "lightgreen");
+ 	else {
+ 		$(".answers").css("background-color", "red");
 			setTimeout(function() {
 				$(".answers").css("background-color", "black")}, 200
 			);
-			correct++;
-		}
-		else {
-			$(".answers").css("background-color", "red");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-		}
-	}
-	if(index == 2) {
+ 	}
 
-		if(answer == "c") {
-			$(".answers").css("background-color", "lightgreen");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-			correct++;
-		}
-		else {
-			$(".answers").css("background-color", "red");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-		}
-	}
-	if(index == 3) {
 
-		if(answer == "b") {
-			$(".answers").css("background-color", "lightgreen");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-			correct++;
-		}
-		else {
-			$(".answers").css("background-color", "red");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-		}
-	}
-	if(index == 4) {
-
-		if(answer == "a") {
-			$(".answers").css("background-color", "lightgreen");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-			correct++;
-		}
-		else {
-			$(".answers").css("background-color", "red");
-			setTimeout(function() {
-				$(".answers").css("background-color", "black")}, 200
-			);
-		}
-	}
+	
 }
 
 function getAnswer() {
@@ -268,8 +225,8 @@ function submit() {
 	console.log(userAnswers[index]);
 	index++;
 
-	if(index < 5) {
-		if(index == 4 ) {
+	if(index < maxIndex) {
+		if(index == (maxIndex - 1) ) {
       		$("#submit").text("Submit");
       	}
 
@@ -287,13 +244,6 @@ function results() {
 		var confetti = "assets/images/Confetti1.jpg";
 		$("#picture").css('background-image', 'url(' + confetti + ')'); 
 
-		$("#question").html("<h1>Question 1</h1><p></p><h2>Your Answer: " + userAnswers[0].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: D</h2>" + "<br>" + 
-							"<h1>Question 2</h1><p></p><h2>Your Answer: " + userAnswers[1].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: D</h2>" + "<br>" + 
-							"<h1>Quesion 3</h1><p></p><h2>Your Answer: " + userAnswers[2].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: C</h2>" + "<br>" + 
-							"<h1>Question 4</h1><p></p><h2>Your Answer: " + userAnswers[3].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: B</h2>" + "<br>" + 
-							"<h1>Question 5</h1><p></p><h2>Your Answer: " + userAnswers[4].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: A</h2>" + "<br>" + 
-							"<br><br><br><br> <h1>You Got " + correct + " out of 5 correct!</h1>");
-
 		$("#show-number").css("display", "none");
 		$(".answers").css("display", "none");
 		$("#submit").css("display", "none");
@@ -301,23 +251,17 @@ function results() {
 		setTimeout(function() {
             window.location='index.html'
         }, 10000);
-		
+
+		$("#question").empty();
+		for(i = 0; i < maxIndex; i++) {
+			$("#question").append("<h1>" + "Question " + (i + 1) + "</h1><p></p><h2>Your Answer: " + userAnswers[i].toUpperCase() + "&nbsp;&nbsp;&nbsp;&nbsp;" + "Correct answer: " + movie.key[i].toUpperCase() + "</h2><br>");
+			
+			if(i == (maxIndex - 1)) {
+				$("#question").append("<h1>" + "You got " + correct + " out of " + maxIndex + " answers correct!</h1>");
+			}
+		}
 
 }
-  // if answer is correct
-  // if(userAnswer=== movie.answers[index][3]){
-  //   // add to the number of correct answers
-  //   numCorrect++;
-
-  //   // color the answers green
-  //   $(".answers").css('color', 'lightgreen');
-  // }
-  // // if answer is wrong or blank
-  // else{
-  //   // color the answers red
-  //   $(".answers").css('color', 'red');
-  // }
-
 
 
 function timeConverter(t) {
