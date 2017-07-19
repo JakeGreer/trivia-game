@@ -39,7 +39,7 @@ var movie = {
 				"Three movies are tied for the most oscars ever recieved: \"Ben-Hur\" (1959), \"Titanic\" (1997), and \"The Lord of the Rings: The Return of the King\" (2003). How many oscars did these films recieve?", 
 				"In \"The Godfather,\" what does Jack Wolz find in his bed when he wakes up?",
 				"Which of these men have not played James Bond?",
-				"What is Mr. Mertles dog's name?",
+				"In the movie The Sandlot, what is Mr. Mertles dog's name?",
 				"In the movie series Star Wars, what bounty hunter did Obi-Wan impersonate to prevent an assassination?",
 				"Which Harry Potter book was made into two movies?",
 				"Finish this line from \"The Princess Bride\": \"Hello. My name is Inigo Montoya...\""],
